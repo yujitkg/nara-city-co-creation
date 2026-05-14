@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">奈良市共創チーム</title>
+  <desc id="desc">奈良市みらい価値共創プロジェクト研究の奈良市共創チーム紹介サイト</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect x="64" y="64" width="1072" height="502" fill="#f7f5f2"/>
+  <path d="M802 128c102 48 171 151 171 270 0 51-13 99-35 141" fill="none" stroke="#b89b5e" stroke-width="2" opacity=".42"/>
+  <path d="M226 423c157-88 317-88 478 0" fill="none" stroke="#8c6a2e" stroke-width="3" opacity=".52"/>
+  <circle cx="255" cy="414" r="9" fill="#8c6a2e" opacity=".72"/>
+  <circle cx="466" cy="371" r="9" fill="#b89b5e" opacity=".72"/>
+  <circle cx="684" cy="423" r="9" fill="#8c6a2e" opacity=".72"/>
+  <text x="112" y="164" fill="#8c6a2e" font-family="Hiragino Sans, Yu Gothic, sans-serif" font-size="24" font-weight="700" letter-spacing="4">NARA CO-CREATION TEAM</text>
+  <text x="112" y="294" fill="#1f1f1f" font-family="Hiragino Mincho ProN, Yu Mincho, serif" font-size="72">奈良の未来を、共に創る。</text>
+  <text x="112" y="366" fill="#6b6b6b" font-family="Hiragino Sans, Yu Gothic, sans-serif" font-size="26">奈良市みらい価値共創プロジェクト研究</text>
+  <text x="112" y="444" fill="#1f1f1f" font-family="Hiragino Mincho ProN, Yu Mincho, serif" font-size="34">Co-creating Nara’s future from its living heritage.</text>
+</svg>
