@@ -128,8 +128,8 @@ a {
 }
 
 .hero {
-  min-height: 78vh;
-  padding: clamp(128px, 13vw, 156px) clamp(28px, 6vw, 96px) clamp(88px, 10vw, 128px);
+  min-height: 72vh;
+  padding: clamp(112px, 11vw, 138px) clamp(28px, 6vw, 96px) clamp(68px, 8vw, 96px);
 }
 
 .hero-inner {
@@ -138,7 +138,7 @@ a {
   align-items: center;
   gap: clamp(88px, 11vw, 168px);
   max-width: 1200px;
-  min-height: calc(78vh - 240px);
+  min-height: calc(72vh - 200px);
   margin: 0 auto;
 }
 
@@ -239,7 +239,7 @@ h3 {
 
 .hero-visual {
   position: relative;
-  min-height: 460px;
+  min-height: 420px;
 }
 
 .hero-visual::before {
@@ -253,7 +253,7 @@ h3 {
 
 .hero-art {
   position: relative;
-  height: 460px;
+  height: 420px;
   overflow: hidden;
   background:
     linear-gradient(rgba(140, 106, 46, 0.016) 1px, transparent 1px),
@@ -940,8 +940,8 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-top: clamp(108px, 13vw, 132px);
-    padding-bottom: clamp(80px, 10vw, 112px);
+    padding-top: clamp(104px, 12vw, 122px);
+    padding-bottom: clamp(64px, 8vw, 92px);
   }
 
   .section {
@@ -984,11 +984,11 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 340px;
+    min-height: 300px;
   }
 
   .hero-art {
-    height: 340px;
+    height: 300px;
   }
 
   .member-grid {
@@ -1028,7 +1028,7 @@ h3 {
   }
 
   .hero {
-    padding: 100px 24px 78px;
+    padding: 96px 24px 62px;
   }
 
   .section {
@@ -1083,11 +1083,11 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 280px;
+    min-height: 220px;
   }
 
   .hero-art {
-    height: 280px;
+    height: 220px;
     border-radius: 30px;
   }
 
