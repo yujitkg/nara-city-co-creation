@@ -200,7 +200,7 @@ const updateHeader = () => {
 
 const initReveal = () => {
   const revealTargets = [
-    ...document.querySelectorAll(".section, .member-item, .project-card, .news-item, .contact-panel")
+    ...document.querySelectorAll(".hero-copy, .section, .section-heading, .member-item, .project-card, .news-item, .contact-panel")
   ];
 
   revealTargets.forEach((element, index) => {
