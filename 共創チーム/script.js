@@ -55,7 +55,7 @@ const populateSelect = (select, values) => {
 const createMemberCard = (member, index = 0) => {
   const item = document.createElement("li");
   item.className = "member-item reveal";
-  item.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 55}ms`);
+  item.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 70}ms`);
 
   const card = document.createElement("article");
   card.className = member.preparing ? "member-card is-preparing" : "member-card";
@@ -170,7 +170,7 @@ const renderMembers = ({ animate = false } = {}) => {
   window.setTimeout(() => {
     renderMemberList();
     window.requestAnimationFrame(() => memberGrid?.classList.remove("is-updating"));
-  }, 120);
+  }, 150);
 };
 
 const initMemberFilters = () => {
@@ -205,7 +205,7 @@ const initReveal = () => {
 
   revealTargets.forEach((element, index) => {
     element.classList.add("reveal");
-    element.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 45}ms`);
+    element.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 60}ms`);
   });
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
