@@ -352,8 +352,8 @@ h3 {
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 1.08s cubic-bezier(0.22, 1, 0.36, 1), transform 1.08s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(12px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -423,7 +423,7 @@ h3 {
 }
 
 .section {
-  padding: clamp(128px, 14vw, 220px) clamp(24px, 5vw, 72px);
+  padding: clamp(88px, 9vw, 128px) clamp(24px, 5vw, 72px);
 }
 
 .about,
@@ -433,28 +433,28 @@ h3 {
 }
 
 .about {
-  padding-top: clamp(70px, 8vw, 130px);
-  padding-bottom: clamp(190px, 20vw, 320px);
+  padding-top: clamp(86px, 8vw, 116px);
+  padding-bottom: clamp(92px, 9vw, 120px);
 }
 
 .members {
-  padding-top: clamp(170px, 18vw, 280px);
-  padding-bottom: clamp(220px, 22vw, 360px);
+  padding-top: clamp(100px, 10vw, 136px);
+  padding-bottom: clamp(112px, 11vw, 142px);
 }
 
 .projects {
-  padding-top: clamp(150px, 16vw, 260px);
-  padding-bottom: clamp(190px, 19vw, 300px);
+  padding-top: clamp(96px, 9vw, 128px);
+  padding-bottom: clamp(102px, 10vw, 132px);
 }
 
 .news {
-  padding-top: clamp(100px, 11vw, 170px);
-  padding-bottom: clamp(72px, 8vw, 120px);
+  padding-top: clamp(74px, 7vw, 100px);
+  padding-bottom: clamp(70px, 7vw, 94px);
 }
 
 .contact {
-  padding-top: clamp(64px, 7vw, 110px);
-  padding-bottom: clamp(120px, 12vw, 190px);
+  padding-top: clamp(78px, 8vw, 104px);
+  padding-bottom: clamp(84px, 8vw, 110px);
 }
 
 .section-grid,
@@ -945,33 +945,33 @@ h3 {
   }
 
   .section {
-    padding-top: clamp(104px, 15vw, 150px);
-    padding-bottom: clamp(104px, 15vw, 150px);
+    padding-top: clamp(74px, 10vw, 106px);
+    padding-bottom: clamp(74px, 10vw, 106px);
   }
 
   .about {
-    padding-top: clamp(70px, 10vw, 104px);
-    padding-bottom: clamp(140px, 18vw, 190px);
+    padding-top: clamp(74px, 10vw, 98px);
+    padding-bottom: clamp(78px, 10vw, 104px);
   }
 
   .members {
-    padding-top: clamp(132px, 17vw, 184px);
-    padding-bottom: clamp(160px, 20vw, 220px);
+    padding-top: clamp(86px, 11vw, 116px);
+    padding-bottom: clamp(94px, 12vw, 126px);
   }
 
   .projects {
-    padding-top: clamp(126px, 16vw, 176px);
-    padding-bottom: clamp(144px, 18vw, 198px);
+    padding-top: clamp(82px, 11vw, 112px);
+    padding-bottom: clamp(88px, 12vw, 118px);
   }
 
   .news {
-    padding-top: clamp(90px, 12vw, 126px);
-    padding-bottom: clamp(58px, 8vw, 86px);
+    padding-top: clamp(64px, 9vw, 88px);
+    padding-bottom: clamp(58px, 8vw, 78px);
   }
 
   .contact {
-    padding-top: clamp(54px, 8vw, 80px);
-    padding-bottom: clamp(88px, 12vw, 126px);
+    padding-top: clamp(66px, 9vw, 88px);
+    padding-bottom: clamp(72px, 10vw, 96px);
   }
 
   .hero-inner,
@@ -1037,28 +1037,28 @@ h3 {
   }
 
   .about {
-    padding-top: 82px;
-    padding-bottom: 138px;
+    padding-top: 68px;
+    padding-bottom: 74px;
   }
 
   .members {
-    padding-top: 126px;
-    padding-bottom: 154px;
+    padding-top: 82px;
+    padding-bottom: 92px;
   }
 
   .projects {
-    padding-top: 120px;
-    padding-bottom: 142px;
+    padding-top: 78px;
+    padding-bottom: 88px;
   }
 
   .news {
-    padding-top: 82px;
-    padding-bottom: 52px;
+    padding-top: 62px;
+    padding-bottom: 50px;
   }
 
   .contact {
-    padding-top: 52px;
-    padding-bottom: 92px;
+    padding-top: 62px;
+    padding-bottom: 72px;
   }
 
   h1 {

@@ -227,7 +227,7 @@ const initReveal = () => {
 
   revealTargets.forEach((element, index) => {
     element.classList.add("reveal");
-    element.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 60}ms`);
+    element.style.setProperty("--reveal-delay", `${Math.min(index, 4) * 38}ms`);
   });
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
