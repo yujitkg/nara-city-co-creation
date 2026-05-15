@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR_GITHUB_USERNAME.github.io/nara-city-co-creation/sitemap.xml
+Sitemap: https://yujitkg.github.io/nara-city-co-creation/sitemap.xml
