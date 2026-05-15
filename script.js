@@ -6,7 +6,7 @@ const memberResult = document.querySelector("#member-result");
 const sectorFilter = document.querySelector("#sector-filter");
 const interestFilter = document.querySelector("#interest-filter");
 const memberSearch = document.querySelector("#member-search");
-const members = window.MEMBER_DATA || [];
+const members = Array.isArray(window.membersData) ? window.membersData : [];
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let revealObserver;
 
@@ -168,7 +168,9 @@ const renderMemberList = () => {
   if (!filteredMembers.length) {
     const item = document.createElement("li");
     item.className = "member-empty reveal";
-    item.textContent = "条件に一致するメンバーは見つかりませんでした。";
+    item.textContent = members.length
+      ? "条件に一致するメンバーは見つかりませんでした。"
+      : "現在表示できるメンバーがいません。";
     fragment.appendChild(item);
   }
 
@@ -196,6 +198,8 @@ const renderMembers = ({ animate = false } = {}) => {
     window.requestAnimationFrame(() => memberGrid?.classList.remove("is-updating"));
   }, 150);
 };
+
+window.renderMembers = renderMembers;
 
 const initMemberFilters = () => {
   const publicMembers = members.filter((member) => !member.preparing);
@@ -255,7 +259,7 @@ const initReveal = () => {
 };
 
 initMemberFilters();
-renderMembers();
+renderMembers(members);
 initReveal();
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });

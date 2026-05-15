@@ -16,7 +16,7 @@
   - links: 任意リンク。本人確認後に追加してください
 */
 
-window.MEMBER_DATA = [
+window.membersData = [
   {
     name: "安部 梓",
     romanizedName: "Abe Azusa",

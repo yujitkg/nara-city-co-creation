@@ -29,12 +29,12 @@ https://yujitkg.github.io/nara-city-co-creation/
 
 ## 更新方法
 
-メンバー情報は `data/members.js` の `window.MEMBER_DATA` を編集します。
+メンバー情報は `data/members.js` の `window.membersData` を編集します。
 
 ## メンバー追加方法
 
 1. `data/members.js` を開きます。
-2. `window.MEMBER_DATA` の配列に、既存データをコピーして1名分を追加します。
+2. `window.membersData` の配列に、既存データをコピーして1名分を追加します。
 3. `name / romanizedName / affiliation / title / sector / interests / shortBio / photo / links` を入力します。
 4. 写真を使う場合は、画像を `assets/members/` に追加します。
 5. `photo` に `assets/members/ファイル名.jpg` のように相対パスを入力します。
