@@ -18,7 +18,8 @@ https://yujitkg.github.io/nara-city-co-creation/
 ├── data/
 │   └── members.js
 ├── assets/
-│   └── ogp.svg
+│   ├── ogp.svg
+│   └── members/
 ├── 404.html
 ├── robots.txt
 ├── sitemap.xml
@@ -29,6 +30,15 @@ https://yujitkg.github.io/nara-city-co-creation/
 ## 更新方法
 
 メンバー情報は `data/members.js` の `window.MEMBER_DATA` を編集します。
+
+## メンバー追加方法
+
+1. `data/members.js` を開きます。
+2. `window.MEMBER_DATA` の配列に、既存サンプルをコピーして1名分を追加します。
+3. `name / affiliation / title / sector / interests / shortBio / photo / links` を入力します。
+4. 写真を使う場合は、画像を `assets/members/` に追加します。
+5. `photo` に `assets/members/ファイル名.jpg` のように相対パスを入力します。
+6. リンクがある場合は `links` に追加します。不要な場合は空配列 `[]` のままで問題ありません。
 
 各メンバーは以下の項目で管理します。
 
@@ -41,11 +51,17 @@ https://yujitkg.github.io/nara-city-co-creation/
   interests: ["関心領域"],
   shortBio: "短い紹介文",
   photo: "assets/members/example.jpg",
-  links: [{ label: "Web", url: "https://example.com" }]
+  links: [
+    { label: "Website", url: "https://example.com" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/example" },
+    { label: "Notion", url: "https://www.notion.so/example" }
+  ]
 }
 ```
 
 写真がない場合は `photo` を空文字にすると、氏名から生成したイニシャルが表示されます。
+
+`links` は任意です。`label` は `Website`、`LinkedIn`、`Notion`、`Mail` など自由に指定できます。`url` が空のリンクは表示されません。
 
 ## 注意事項
 
