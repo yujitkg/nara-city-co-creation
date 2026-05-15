@@ -28,13 +28,27 @@ const escapeHtml = (value = "") =>
   })[char]);
 
 const getInitials = (name = "") => {
-  const compactName = String(name).replace(/\s+/g, "");
+  const compactName = String(name)
+    .replace(/（.*?）|\(.*?\)/g, "")
+    .replace(/\s+/g, "");
   return compactName.slice(0, 2) || "N";
 };
 
-const truncateComment = (comment = "") => {
-  const cleanComment = String(comment).trim();
-  return cleanComment.length > 50 ? `${cleanComment.slice(0, 49)}…` : cleanComment;
+const truncateBio = (bio = "") => {
+  const cleanBio = String(bio).trim();
+  return cleanBio.length > 50 ? `${cleanBio.slice(0, 49)}…` : cleanBio;
+};
+
+const getMemberTags = (member) => [member.sector, ...(member.interests || [])].filter(Boolean).slice(0, 3);
+
+const getMemberLinks = (links = []) => {
+  if (Array.isArray(links)) {
+    return links.filter((link) => link && link.label && link.url);
+  }
+
+  return Object.entries(links)
+    .filter(([, url]) => url)
+    .map(([label, url]) => ({ label, url }));
 };
 
 const uniqueValues = (values) => [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "ja"));
@@ -63,9 +77,9 @@ const createMemberCard = (member, index = 0) => {
   const avatar = document.createElement("div");
   avatar.className = "member-avatar";
 
-  if (member.image) {
+  if (member.photo) {
     const img = document.createElement("img");
-    img.src = member.image;
+    img.src = member.photo;
     img.alt = `${member.name}さんの写真`;
     img.loading = "lazy";
     img.addEventListener("error", () => {
@@ -79,19 +93,26 @@ const createMemberCard = (member, index = 0) => {
     avatar.textContent = getInitials(member.name);
   }
 
-  const tags = (member.tags || [])
-    .filter(Boolean)
-    .slice(0, 3)
+  const tags = getMemberTags(member)
     .map((tag) => `<span class="member-tag">${escapeHtml(tag)}</span>`)
     .join("");
+  const linkItems = getMemberLinks(member.links)
+    .map((link) => `
+      <a class="member-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
+        ${escapeHtml(link.label)}
+      </a>
+    `)
+    .join("");
+  const affiliation = [member.affiliation, member.title].filter(Boolean).join(" / ");
 
   card.appendChild(avatar);
   card.insertAdjacentHTML("beforeend", `
     <div class="member-info">
       <h3>${escapeHtml(member.name)}</h3>
-      <p class="member-position">${escapeHtml(member.position || "")}</p>
+      ${affiliation ? `<p class="member-position">${escapeHtml(affiliation)}</p>` : ""}
       ${tags ? `<div class="member-tags">${tags}</div>` : ""}
-      <p class="member-comment">${escapeHtml(truncateComment(member.comment || ""))}</p>
+      ${member.shortBio ? `<p class="member-comment">${escapeHtml(truncateBio(member.shortBio))}</p>` : ""}
+      ${linkItems ? `<div class="member-links">${linkItems}</div>` : ""}
     </div>
   `);
 
@@ -120,11 +141,12 @@ const getFilteredMembers = () => {
     const matchesInterest = state.interest === "all" || (member.interests || []).includes(state.interest);
     const searchableText = [
       member.name,
-      member.position,
+      member.affiliation,
+      member.title,
       member.sector,
-      member.comment,
-      ...(member.tags || []),
-      ...(member.interests || [])
+      member.shortBio,
+      ...(member.interests || []),
+      ...getMemberLinks(member.links).flatMap((link) => [link.label, link.url])
     ].join(" ").toLowerCase();
     const matchesQuery = !query || searchableText.includes(query);
 
