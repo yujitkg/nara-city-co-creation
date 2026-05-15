@@ -34,8 +34,8 @@ https://yujitkg.github.io/nara-city-co-creation/
 ## メンバー追加方法
 
 1. `data/members.js` を開きます。
-2. `window.MEMBER_DATA` の配列に、既存サンプルをコピーして1名分を追加します。
-3. `name / affiliation / title / sector / interests / shortBio / photo / links` を入力します。
+2. `window.MEMBER_DATA` の配列に、既存データをコピーして1名分を追加します。
+3. `name / romanizedName / affiliation / title / sector / interests / shortBio / photo / links` を入力します。
 4. 写真を使う場合は、画像を `assets/members/` に追加します。
 5. `photo` に `assets/members/ファイル名.jpg` のように相対パスを入力します。
 6. リンクがある場合は `links` に追加します。不要な場合は空配列 `[]` のままで問題ありません。
@@ -45,6 +45,7 @@ https://yujitkg.github.io/nara-city-co-creation/
 ```js
 {
   name: "氏名",
+  romanizedName: "Romanized Name",
   affiliation: "所属",
   title: "肩書き・役割",
   sector: "セクター",

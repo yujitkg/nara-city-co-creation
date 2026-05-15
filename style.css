@@ -660,6 +660,15 @@ h3 {
   margin: 0;
 }
 
+.member-roman {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  color: rgba(107, 107, 107, 0.72);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
 .member-card .member-position {
   margin-bottom: 16px;
   color: rgba(31, 31, 31, 0.78);

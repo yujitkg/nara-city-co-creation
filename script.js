@@ -109,6 +109,7 @@ const createMemberCard = (member, index = 0) => {
   card.insertAdjacentHTML("beforeend", `
     <div class="member-info">
       <h3>${escapeHtml(member.name)}</h3>
+      ${member.romanizedName ? `<p class="member-roman">${escapeHtml(member.romanizedName)}</p>` : ""}
       ${affiliation ? `<p class="member-position">${escapeHtml(affiliation)}</p>` : ""}
       ${tags ? `<div class="member-tags">${tags}</div>` : ""}
       ${member.shortBio ? `<p class="member-comment">${escapeHtml(truncateBio(member.shortBio))}</p>` : ""}
@@ -141,6 +142,7 @@ const getFilteredMembers = () => {
     const matchesInterest = state.interest === "all" || (member.interests || []).includes(state.interest);
     const searchableText = [
       member.name,
+      member.romanizedName,
       member.affiliation,
       member.title,
       member.sector,
