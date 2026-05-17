@@ -2,21 +2,11 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("#site-nav");
 const toggle = document.querySelector(".nav-toggle");
 const memberGrid = document.querySelector("#member-grid");
-const memberResult = document.querySelector("#member-result");
-const sectorFilter = document.querySelector("#sector-filter");
-const interestFilter = document.querySelector("#interest-filter");
-const memberSearch = document.querySelector("#member-search");
 const members = Array.isArray(window.membersData) ? window.membersData : [];
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let revealObserver;
 
 document.documentElement.classList.add("js");
-
-const state = {
-  sector: "all",
-  interest: "all",
-  query: ""
-};
 
 const escapeHtml = (value = "") =>
   String(value).replace(/[&<>"']/g, (char) => ({
@@ -49,21 +39,6 @@ const getMemberLinks = (links = []) => {
   return Object.entries(links)
     .filter(([, url]) => url)
     .map(([label, url]) => ({ label, url }));
-};
-
-const uniqueValues = (values) => [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "ja"));
-
-const populateSelect = (select, values) => {
-  if (!select) {
-    return;
-  }
-
-  values.forEach((value) => {
-    const option = document.createElement("option");
-    option.value = value;
-    option.textContent = value;
-    select.appendChild(option);
-  });
 };
 
 const createMemberCard = (member, index = 0) => {
@@ -134,93 +109,31 @@ const observeReveal = (elements) => {
   elements.forEach((element) => revealObserver.observe(element));
 };
 
-const getFilteredMembers = () => {
-  const query = state.query.trim().toLowerCase();
-
-  return members.filter((member) => {
-    const matchesSector = state.sector === "all" || member.sector === state.sector;
-    const matchesInterest = state.interest === "all" || (member.interests || []).includes(state.interest);
-    const searchableText = [
-      member.name,
-      member.romanizedName,
-      member.affiliation,
-      member.title,
-      member.sector,
-      member.shortBio,
-      ...(member.interests || []),
-      ...getMemberLinks(member.links).flatMap((link) => [link.label, link.url])
-    ].join(" ").toLowerCase();
-    const matchesQuery = !query || searchableText.includes(query);
-
-    return matchesSector && matchesInterest && matchesQuery;
-  });
-};
-
-const renderMemberList = () => {
+const renderMemberList = (memberList = members) => {
   if (!memberGrid) {
     return;
   }
 
-  const filteredMembers = getFilteredMembers();
   const fragment = document.createDocumentFragment();
-  filteredMembers.forEach((member, index) => fragment.appendChild(createMemberCard(member, index)));
+  memberList.forEach((member, index) => fragment.appendChild(createMemberCard(member, index)));
 
-  if (!filteredMembers.length) {
+  if (!memberList.length) {
     const item = document.createElement("li");
     item.className = "member-empty reveal";
-    item.textContent = members.length
-      ? "条件に一致するメンバーは見つかりませんでした。"
-      : "現在表示できるメンバーがいません。";
+    item.textContent = "現在表示できるメンバーがいません。";
     fragment.appendChild(item);
   }
 
   memberGrid.replaceChildren(fragment);
 
-  if (memberResult) {
-    memberResult.textContent = `${filteredMembers.length}名を表示中`;
-    memberResult.classList.remove("is-updating");
-  }
-
   observeReveal(Array.from(memberGrid.children));
 };
 
-const renderMembers = ({ animate = false } = {}) => {
-  if (!animate || prefersReducedMotion) {
-    renderMemberList();
-    return;
-  }
-
-  memberGrid?.classList.add("is-updating");
-  memberResult?.classList.add("is-updating");
-
-  window.setTimeout(() => {
-    renderMemberList();
-    window.requestAnimationFrame(() => memberGrid?.classList.remove("is-updating"));
-  }, 150);
+const renderMembers = (memberList = members) => {
+  renderMemberList(Array.isArray(memberList) ? memberList : members);
 };
 
 window.renderMembers = renderMembers;
-
-const initMemberFilters = () => {
-  const publicMembers = members.filter((member) => !member.preparing);
-  populateSelect(sectorFilter, uniqueValues(publicMembers.map((member) => member.sector)));
-  populateSelect(interestFilter, uniqueValues(publicMembers.flatMap((member) => member.interests || [])));
-
-  sectorFilter?.addEventListener("change", (event) => {
-    state.sector = event.target.value;
-    renderMembers({ animate: true });
-  });
-
-  interestFilter?.addEventListener("change", (event) => {
-    state.interest = event.target.value;
-    renderMembers({ animate: true });
-  });
-
-  memberSearch?.addEventListener("input", (event) => {
-    state.query = event.target.value;
-    renderMembers({ animate: true });
-  });
-};
 
 const updateHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -228,7 +141,7 @@ const updateHeader = () => {
 
 const initReveal = () => {
   const revealTargets = [
-    ...document.querySelectorAll(".hero-copy, .section, .section-heading, .member-item, .project-card, .news-item, .contact-panel")
+    ...document.querySelectorAll(".hero-copy, .section, .section-heading, .member-item, .project-card, .achievement-item, .news-item, .contact-panel")
   ];
 
   revealTargets.forEach((element, index) => {
@@ -258,7 +171,6 @@ const initReveal = () => {
   observeReveal(revealTargets);
 };
 
-initMemberFilters();
 renderMembers(members);
 initReveal();
 updateHeader();
